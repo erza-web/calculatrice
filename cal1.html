@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+ <html lang="en">
+<head>     
+    <meta charset="UTF-8">     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <title>Document</title>     
+    <style>         
+    select {             
+        width: 14%;         
+        }     
+        </style> 
+        </head> 
+        <body>     
+            <form action="" method="POST">         
+                <input type="text" id="number" name="text" placeholder="Entrez un nombre">         
+                <br>         
+                <input type="text" id="number2" name="text" placeholder="Entrez un nombre">         
+                <br>         
+                <select name="property_type" required id="op">             
+                    <option value="" disabled selected>les opérateurs</option>             
+                    <option value="addition">+</option>             
+                    <option value="soustraction">-</option>             
+                    <option value="division">/</option>             
+                    <option value="multiplication">*</option>         
+                    </select>         
+                    <br>         
+                    <button type="button" id="calcul">Résultat</button>     
+                    </form>     
+                    <div id="result"></div>     
+            <script>         
+            document.getElementById("calcul").addEventListener("click", function() 
+            {             
+                let num1 = document.getElementById("number").value.trim();             
+                let num2 = document.getElementById("number2").value.trim();             
+                let op = document.getElementById("op").value;             
+                let Resultat;             
+                // Vérification si les valeurs sont des nombres             
+                if (num1 === "" || num2 === "") {                 
+                    Resultat = "Veuillez remplir tous les champs.";             
+                } else if (isNaN(num1) || isNaN(num2)) {                 
+                    Resultat = "Veuillez entrer uniquement des nombres.";             
+                } else {                 
+                    // Conversion des valeurs en nombres                 
+                    num1 = parseFloat(num1);                 
+                    num2 = parseFloat(num2);                 
+                    switch (op) {                     
+                        case 'addition':                         
+                        Resultat = num1 + num2;                         
+                        break;                     
+                        case 'soustraction':                         
+                        Resultat = num1 - num2;                         
+                        break;                     
+                        case 'multiplication':                         
+                        Resultat = num1 * num2;                         
+                        break;                     
+                        case 'division':                         
+                        if (num2 == 0) {                             
+                            Resultat = "Erreur: Division par zéro impossible.";                         
+                            } else {                             
+                                Resultat = num1 / num2;                         
+                                }                         
+                                break;                     
+                        default:                         
+                        Resultat = 'Veuillez sélectionner un opérateur.';                         
+                        break;                 
+                        }             
+                        }             
+                        document.getElementById("result").innerText = Resultat;         
+                        });     
+                </script> 
+                </body> 
+</html>
